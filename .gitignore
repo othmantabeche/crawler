@@ -33,3 +33,4 @@ go.work.sum
 
 crawler
 go.sum
+report.json
