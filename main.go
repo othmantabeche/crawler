@@ -18,7 +18,7 @@ func main() {
 
 	rawBaseURL := comandLineArgs[0]
 
-	if len(rawBaseURL) == 1 {
+	if len(comandLineArgs) == 1 {
 		fmt.Println("starting crawl of:", rawBaseURL)
 	}
 
@@ -29,12 +29,4 @@ func main() {
 	for page, count := range pages {
 		fmt.Printf("%v -- %v\n", page, count)
 	}
-
-	/*
-		html, err := getHTML(comandLineArgs[0])
-		if err != nil {
-			fmt.Println(err)
-		}
-		fmt.Println(html)
-	*/
 }
