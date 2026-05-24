@@ -22,9 +22,11 @@ func getImagesFromHTML(htmlBody string, baseURL *url.URL) ([]string, error) {
 		}
 
 		src = strings.TrimSpace(src)
+		if src == "" {
+			return
+		}
 		relativeURL, err := url.Parse(src)
 		if err != nil {
-			fmt.Println("couldn't parse HTML: %w", err)
 			return
 		}
 

@@ -14,6 +14,9 @@ func normalizeURL(inputURL string) (string, error) {
 
 	fullPath := parsedURL.Host + parsedURL.Path
 	fullPath = strings.ToLower(fullPath)
+	if fullPath == "" {
+		return "", errors.New("couldn't parse URL")
+	}
 
 	if fullPath[len(fullPath)-1] == '/' {
 		fullPath = fullPath[:len(fullPath)-1]

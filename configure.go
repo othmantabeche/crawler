@@ -38,6 +38,12 @@ func configure(rawBaseURL string, maxConcurrency int, maxPages int) (*config, er
 	if err != nil {
 		return nil, fmt.Errorf("couldn't parse base URL: %v", err)
 	}
+	if maxConcurrency < 1 {
+		return nil, fmt.Errorf("maxConcurrency must be at least 1")
+	}
+	if maxPages < 1 {
+		return nil, fmt.Errorf("maxPages must be at least 1")
+	}
 
 	return &config{
 		pages:              make(map[string]PageData),

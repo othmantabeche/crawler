@@ -12,10 +12,12 @@ func getHeadingFromHTML(html string) string {
 		return ""
 	}
 
-	heading := doc.Find("h1, h2").Text()
-
-	if len(heading) <= 0 {
-		return ""
+	for _, selector := range []string{"h1", "h2"} {
+		heading := strings.TrimSpace(doc.Find(selector).First().Text())
+		if heading != "" {
+			return heading
+		}
 	}
-	return heading
+
+	return ""
 }

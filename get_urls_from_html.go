@@ -22,10 +22,12 @@ func getURLsFromHTML(htmlBody string, baseURL *url.URL) ([]string, error) {
 		}
 
 		href = strings.TrimSpace(href)
+		if href == "" {
+			return
+		}
 		relativeURL, err := url.Parse(href)
 
 		if err != nil {
-			fmt.Println("couldn't parse href: %w", err)
 			return
 		}
 
